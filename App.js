@@ -9,7 +9,7 @@ export default function App() {
 
   const calculate = () => {
 
-    if (!nome || !valorOriginal || !percentual) {
+    if (!nomeProduto || !valorOriginal || !percentual) {
       Alert.alert('Erro', 'Preencha todos os campos');
       return;
     }
@@ -21,7 +21,7 @@ export default function App() {
     const novoValor = valor + valorAumento;
 
     setResultado({
-      nome,
+      nomeProduto,
       valorOriginal: valor,
       percentual: aumento,
       valorAumento,
@@ -33,7 +33,6 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.titulo}>Formulário: Calculadora de percentual</Text>
       <Image
-        style={styles.stretch}
         source={require('./assets/form-img.avif')}
       />
       <TextInput
@@ -57,11 +56,11 @@ export default function App() {
       <Button title="Calcular" onPress={calculate} />
       {resultado && (
         <View style={styles.resultado}>
-          <Text style={styles.tituloResultado}>Resultado</Text>
-          <Text>Produto: {resultado.nome}</Text>
-          <Text>Valor Original: R$ {resultado.valorOriginal.toFixed(2)}</Text>
-          <Text>Aumento: {resultado.percentual}%</Text>
-          <Text>Valor do Aumento: R$ {resultado.valorAumento.toFixed(2)}</Text>
+          <Text style={styles.tituloResultado}>Resultado Do Produto:</Text>
+          <Text style={styles.descResultado}>Nome do Produto: {resultado.nomeProduto}</Text>
+          <Text style={styles.descResultado}>Valor Original: R$ {resultado.valorOriginal.toFixed(2)}</Text>
+          <Text style={styles.descResultado}>Aumento: {resultado.percentual}%</Text>
+          <Text style={styles.descResultado}>Valor do Aumento no valor: R$ {resultado.valorAumento.toFixed(2)}</Text>
           <Text style={styles.novoValor}>Novo Valor: R$ {resultado.novoValor.toFixed(2)}
           </Text>
         </View>)}
@@ -89,16 +88,28 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 15,
     paddingHorizontal: 10,
-  }, resultado: {
+  },
+  resultado: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
     marginTop: 20,
     padding: 15,
     backgroundColor: '#f0f0f0',
-    borderRadius: 5,
-  }, tituloResultado: {
-    fontSize: 18,
+    borderRadius: 50,
+  },
+  tituloResultado: {
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 10,
-  }, novoValor: {
+    color: 'red'
+  },
+  descResultado: {
+    fontSize: 20,
+    marginBottom: 10,
+    color: "black"
+  },
+  novoValor: {
     fontWeight: 'bold',
     marginTop: 5,
   },

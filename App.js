@@ -32,9 +32,11 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Text style={styles.titulo}>Formulário: Calculadora de percentual</Text>
-      <Image
-        source={require('./assets/form-img.avif')}
-      />
+      <View style={styles.containerImage}>
+        <Image
+          source={require('./assets/transferir.png')}
+        />
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Nome do produto"
@@ -72,8 +74,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#778899',
+    backgroundColor: '#fff',
     justifyContent: "center"
+  },
+  containerImage: {
+    justifyContent: 'center',
+    alignContent: 'center',
+    alignItems: 'center',
+    paddingBottom: 20
   },
   titulo: {
     fontSize: 20,
